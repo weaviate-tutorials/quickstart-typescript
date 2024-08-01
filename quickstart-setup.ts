@@ -7,6 +7,8 @@ import weaviate, { WeaviateClient } from 'weaviate-client'
 import { vectorizer, generative } from 'weaviate-client'
 
 // Get environment variables
+// Set these environment variables before you run the script. For more details,
+// the README file
 const weaviate_cloud_url = process.env.WCD_URL || 'NEEDS A CLOUD URL';
 const weaviate_cloud_api_key = process.env.WCD_API_KEY || 'NEEDS A CLOUD API KEY';
 const openai_api_key = process.env.OPENAI_API_KEY || 'NEEDS AN OPENAI API KEY';
