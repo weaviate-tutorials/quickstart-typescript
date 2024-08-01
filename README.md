@@ -11,5 +11,6 @@ There are two code files.
 
 Both files use the [TypeScript v3 client](https://weaviate.io/developers/weaviate/client-libraries/typescript/typescript-v3).
 
-Use `quickstart-setup.ts` to create the example collection. To run a query, edit
-`quickstart-query.ts` and uncomment the line that calls the query.
+Use `quickstart-setup.ts` to create the example collection.
+To run a query, edit `quickstart-query.ts` and uncomment the line that calls the
+query.
