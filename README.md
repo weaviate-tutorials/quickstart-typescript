@@ -9,8 +9,7 @@ There are two code files.
 - `quickstart-setup.ts` This code creates a collection.
 - `quickstart-query.ts` This code queries the collection.
 
-Both files use the [TypeScript v3 client]
-(https://weaviate.io/developers/weaviate/client-libraries/typescript/typescript-v3).
+Both files use the [TypeScript v3 client](https://weaviate.io/developers/weaviate/client-libraries/typescript/typescript-v3).
 
 Use `quickstart-setup.ts` to create the example collection. To run a query, edit
 `quickstart-query.ts` and uncomment the line that calls the query.
