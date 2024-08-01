@@ -1,35 +1,36 @@
 // From: https://weaviate.io/developers/weaviate/quickstart
+// Use this file to create the example collection.
+// To run a query, edit `quickstart-query.ts` to uncomment the line that calls
+// the query.
 
-//============ Ignore above here
 import weaviate, { WeaviateClient } from 'weaviate-client'
 import { vectorizer, generative } from 'weaviate-client'
 
 // Get environment variables
-const weaviate_cloud_url_env = process.env.WCD_URL;
-const weaviate_cloud_url = weaviate_cloud_url_env !== undefined ? weaviate_cloud_url_env : 'not-present'
-
-const weaviate_cloud_api_key_env = process.env.WCD_API_KEY;
-const weaviate_cloud_api_key = weaviate_cloud_api_key_env !== undefined ? weaviate_cloud_api_key_env : 'not-present'
-
-const openai_api_key_env = process.env.OPENAI_API_KEY;
-const openai_api_key = openai_api_key_env !== undefined ? openai_api_key_env : 'not-present'
+const weaviate_cloud_url = process.env.WCD_URL || 'NEEDS A CLOUD URL';
+const weaviate_cloud_api_key = process.env.WCD_API_KEY || 'NEEDS A CLOUD API KEY';
+const openai_api_key = process.env.OPENAI_API_KEY || 'NEEDS AN OPENAI API KEY';
 
 // Create client object
 const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
-  weaviate_cloud_url as string,
-  {
-    authCredentials: new weaviate.ApiKey(weaviate_cloud_api_key as string),
-    headers: { 'X-OpenAI-Api-Key': openai_api_key as string, }
-  }
+ weaviate_cloud_url,
+ {
+   authCredentials: new weaviate.ApiKey(weaviate_cloud_api_key),
+   headers: { 'X-OpenAI-Api-Key': openai_api_key, }
+ }
 )
 
 // Check client status
 // console.log(await client.isReady())
 
-// Delete old collection if it exists
-if(client.collections.get('Question')){
-  await client.collections.delete('Question')
-}
+// Delete the collection if it exists
+// To start cleanly each time you run this script, uncomment the delete
+// statement. Be careful. If you happen to have another collection called
+// 'Question' this statement deletes it.
+
+// if(client.collections.get('Question')){
+//   await client.collections.delete('Question')
+// }
 
 // Create collection
 async function createCollection() {

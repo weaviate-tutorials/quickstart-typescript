@@ -1,21 +1,22 @@
 // From: https://weaviate.io/developers/weaviate/quickstart
+// Use `quickstart-setup.ts` to create the example collection.
+// To run a query, edit this file, to uncomment the line that calls the query.
 
-//============ Ignore above here
 import weaviate, { WeaviateClient } from 'weaviate-client'
 import { vectorizer, generative } from 'weaviate-client'
 
 // Get environment variables
-const weaviate_cloud_url = process.env.WCD_URL;
-const weaviate_cloud_api_key = process.env.WCD_API_KEY;
-const openai_api_key = process.env.OPENAI_API_KEY;
+const weaviate_cloud_url = process.env.WCD_URL || 'NEEDS A CLOUD URL';
+const weaviate_cloud_api_key = process.env.WCD_API_KEY || 'NEEDS A CLOUD API KEY';
+const openai_api_key = process.env.OPENAI_API_KEY || 'NEEDS AN OPENAI API KEY';
 
 // Create client object
 const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
-  weaviate_cloud_url || 'NEEDS A CLOUD URL',
-  {
-    authCredentials: new weaviate.ApiKey(weaviate_cloud_api_key || 'NEEDS A CLOUD KEY',),
-    headers: { 'X-OpenAI-Api-Key': openai_api_key || 'NEEDS AN OPENAI KEY', }
-  }
+ weaviate_cloud_url,
+ {
+   authCredentials: new weaviate.ApiKey(weaviate_cloud_api_key),
+   headers: { 'X-OpenAI-Api-Key': openai_api_key, }
+ }
 )
 
 // Check client status
