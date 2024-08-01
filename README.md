@@ -6,12 +6,12 @@ corresponds to the Quickstart as of 2024-07-31.
 
 ## Run the project
 
-There are two code files.
+There are two code files. Both files use the [TypeScript v3 client](https://weaviate.io/developers/weaviate/client-libraries/typescript/typescript-v3).
 
 - `quickstart-setup.ts` This code creates a collection.
 - `quickstart-query.ts` This code queries the collection.
 
-Both files use the [TypeScript v3 client](https://weaviate.io/developers/weaviate/client-libraries/typescript/typescript-v3).
+To run the project, follow these steps:
 
 1. Configure environment variables to connect to a Weaviate instance.
 1. Use `quickstart-setup.ts` to create the example collection.
