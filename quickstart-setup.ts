@@ -3,22 +3,21 @@
 // To run a query, edit `quickstart-query.ts` to uncomment the line that calls
 // the query.
 
-import weaviate, { WeaviateClient } from 'weaviate-client'
-import { vectorizer, generative } from 'weaviate-client'
+import weaviate, { WeaviateClient, vectorizer, generative } from 'weaviate-client'
 
 // Get environment variables
 // Set these environment variables before you run the script. For more details,
 // the README file
-const weaviate_cloud_url = process.env.WCD_URL || 'NEEDS A CLOUD URL';
-const weaviate_cloud_api_key = process.env.WCD_API_KEY || 'NEEDS A CLOUD API KEY';
-const openai_api_key = process.env.OPENAI_API_KEY || 'NEEDS AN OPENAI API KEY';
+const weaviateCloudUrl = process.env.WCD_URL || 'NEEDS A CLOUD URL';
+const weaviateCloudApiKey = process.env.WCD_API_KEY || 'NEEDS A CLOUD API KEY';
+const openaiApiKey = process.env.OPENAI_API_KEY || 'NEEDS AN OPENAI API KEY';
 
 // Create client object
 const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
- weaviate_cloud_url,
+ weaviateCloudUrl,
  {
-   authCredentials: new weaviate.ApiKey(weaviate_cloud_api_key),
-   headers: { 'X-OpenAI-Api-Key': openai_api_key, }
+   authCredentials: new weaviate.ApiKey(weaviateCloudApiKey),
+   headers: { 'X-OpenAI-Api-Key': openaiApiKey, }
  }
 )
 
@@ -47,13 +46,13 @@ async function createCollection() {
 // await createCollection();
 
 // Verify collection was created
-async function check_collection() {
+async function checkCollection() {
   const questions = client.collections.get('Question')
   const collectionConfig = await questions.config.get()
   console.log(collectionConfig)
 }
 // Uncomment to verify the collection
-await check_collection()
+await checkCollection()
 
 // Get data file
 const dataFile = 'https://raw.githubusercontent.com/weaviate-tutorials/quickstart/main/data/jeopardy_tiny.json';
