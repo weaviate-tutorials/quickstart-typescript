@@ -37,8 +37,6 @@ async function nearTextQuery() {
 
   return result;
 }
-// Uncomment to run the near text query
-// await nearTextQuery();
 
 // Add a boolean filter
 async function nearTextWhereQuery() {
@@ -57,8 +55,6 @@ async function nearTextWhereQuery() {
   }
   return result;
 }
-// Uncomment to run the filter query
-// await nearTextWhereQuery();
 
 // Generative search query
 async function generativeSearchQuery() {
@@ -75,8 +71,6 @@ async function generativeSearchQuery() {
  }
  return result;
 }
-// Uncomment to run the generative search
-// await generativeSearchQuery();
 
 // Generative search query - grouped prompt
 async function generativeSearchGroupedQuery() {
@@ -90,5 +84,19 @@ async function generativeSearchGroupedQuery() {
  console.log(result.generated);
  return result;
 }
-// Uncomment to run the grouped generative search
-// await generativeSearchGroupedQuery();
+
+async function main() {
+  // Uncomment to run the near text query
+  // await nearTextQuery();
+
+  // Uncomment to run the filter query
+  // await nearTextWhereQuery();
+
+  // Uncomment to run the generative search
+  // await generativeSearchQuery();
+
+  // Uncomment to run the grouped generative search
+  // await generativeSearchGroupedQuery();
+}
+
+main()
