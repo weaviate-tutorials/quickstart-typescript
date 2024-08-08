@@ -85,6 +85,7 @@ async function generativeSearchGroupedQuery() {
  return result;
 }
 
+// Run the queries
 async function main() {
   // Uncomment to run the near text query
   // await nearTextQuery();

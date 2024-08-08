@@ -65,7 +65,7 @@ async function importQuestions() {
   console.log('Bulk inserted: ', result);
 }
 
-// Run the individual functions
+// Run the setup functions
 async function main() {
   // Uncomment to create the collection
   // await createCollection();
