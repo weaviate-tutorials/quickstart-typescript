@@ -3,21 +3,20 @@
 // To run a query, edit this file, to uncomment the line that calls the query.
 
 import weaviate, { WeaviateClient } from 'weaviate-client'
-import { vectorizer, generative } from 'weaviate-client'
 
 // Get environment variables
 // Set these environment variables before you run the script. For more details,
 // the README file
-const weaviate_cloud_url = process.env.WCD_URL || 'NEEDS A CLOUD URL';
-const weaviate_cloud_api_key = process.env.WCD_API_KEY || 'NEEDS A CLOUD API KEY';
-const openai_api_key = process.env.OPENAI_API_KEY || 'NEEDS AN OPENAI API KEY';
+const weaviateCloudUrl = process.env.WCD_URL || 'NEEDS A CLOUD URL';
+const weaviateCloudApiKey = process.env.WCD_API_KEY || 'NEEDS A CLOUD API KEY';
+const openaiApiKey = process.env.OPENAI_API_KEY || 'NEEDS AN OPENAI API KEY';
 
 // Create client object
 const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
- weaviate_cloud_url,
+ weaviateCloudUrl,
  {
-   authCredentials: new weaviate.ApiKey(weaviate_cloud_api_key),
-   headers: { 'X-OpenAI-Api-Key': openai_api_key, }
+   authCredentials: new weaviate.ApiKey(weaviateCloudApiKey),
+   headers: { 'X-OpenAI-Api-Key': openaiApiKey, }
  }
 )
 
@@ -29,7 +28,7 @@ async function nearTextQuery() {
   const questions = client.collections.get('Question');
 
   const result = await questions.query.nearText('biology', {
-    limit:2
+    limit: 2
   });
 
   for (let object of result.objects) {
@@ -50,7 +49,7 @@ async function nearTextWhereQuery() {
              .filter
              .byProperty('category')
              .equal('ANIMALS'),
-    limit:2
+    limit: 2
   });
 
   for (let object of result.objects) {
