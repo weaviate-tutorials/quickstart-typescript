@@ -42,8 +42,6 @@ async function createCollection() {
   })
   console.log(`Collection ${questions.name} created!`);
 }
-// Uncomment to create the collection
-// await createCollection();
 
 // Verify collection was created
 async function checkCollection() {
@@ -51,10 +49,8 @@ async function checkCollection() {
   const collectionConfig = await questions.config.get()
   console.log(collectionConfig)
 }
-// Uncomment to verify the collection
-await checkCollection()
 
-// Get data file
+// Get the data file
 const dataFile = 'https://raw.githubusercontent.com/weaviate-tutorials/quickstart/main/data/jeopardy_tiny.json';
 async function getJsonData() {
   const file = await fetch(dataFile);
@@ -69,5 +65,16 @@ async function importQuestions() {
   console.log('Bulk inserted: ', result);
 }
 
-// Uncomment to import the data
-// await importQuestions();
+// Run the setup functions
+async function main() {
+  // Uncomment to create the collection
+  // await createCollection();
+
+  // Uncomment to verify the collection
+  // await checkCollection()
+
+  // Uncomment to import the data
+  // await importQuestions();
+}
+
+main()
