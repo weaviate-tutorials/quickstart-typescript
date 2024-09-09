@@ -23,7 +23,7 @@ const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
 )
 
 // Check client status
-console.log('Weaviate Ready:', await client.isReady())
+// console.log('Weaviate Ready:', await client.isReady())
 
 async function fetchObjects() {
   const questionCollection = client.collections.get('Question')
@@ -43,13 +43,13 @@ async function fetchObjects() {
 async function nearTextQuery() {
   const questions = client.collections.get('Question');
 
-  const result = await questions.query.nearText('things that can kill you', {
-    limit: 4,
+  const result = await questions.query.nearText('biology', {
+    limit: 2,
     returnMetadata: ['distance']
   });
 
   for (let object of result.objects) {
-    console.log(JSON.stringify(object, null, 2));
+    console.log(JSON.stringify(object.properties, null, 2));
   }
 
   return result;
@@ -65,7 +65,7 @@ async function nearTextWhereQuery() {
     filters: client.collections.get('Question')
              .filter
              .byProperty('category')
-             .equal('SCIENCE'),
+             .equal('ANIMALS'),
     limit: 2
   });
 
@@ -81,8 +81,8 @@ async function nearTextWhereQuery() {
 async function generativeSearchQuery() {
  const questions = client.collections.get('Question');
 
- const result = await questions.generate.nearText('things i can see in the sky',
-   { singlePrompt: `explain why {answer} is something i can see in the sky in french in 25 words or less.` },
+ const result = await questions.generate.nearText('biology',
+   { singlePrompt: `Explain {answer} as you might to a five-year-old.` },
    { limit: 2 }
  );
 
@@ -99,8 +99,8 @@ async function generativeSearchQuery() {
 async function generativeSearchGroupedQuery() {
  const questions = client.collections.get('Question');
 
- const result = await questions.generate.nearText('things that are good for us',
-   { groupedTask: `Write a tweet with emojis about these facts appealing to suburban mums with some fear mongering.` },
+ const result = await questions.generate.nearText('biology',
+   { groupedTask: `Write a tweet with emojis about these facts.` },
    { limit: 2 }
  );
 
@@ -112,4 +112,4 @@ async function generativeSearchGroupedQuery() {
  return result;
 }
 // Uncomment to run the grouped generative search
-await generativeSearchGroupedQuery();
+// await generativeSearchGroupedQuery();

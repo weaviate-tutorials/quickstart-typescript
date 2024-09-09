@@ -23,7 +23,7 @@ const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
 )
 
 // Uncomment to check client status
-console.log(await client.isReady())
+// console.log(await client.isReady())
 
 // Delete the collection if it exists
 // To start cleanly each time you run this script, uncomment the delete
@@ -54,7 +54,7 @@ async function checkCollection() {
   console.log('Config collection: ', collectionConfig)
 }
 // Uncomment to verify the collection
-await checkCollection()
+// await checkCollection()
 
 // Get data file
 const dataFile = 'https://raw.githubusercontent.com/weaviate-tutorials/quickstart/main/data/jeopardy_tiny.json';
@@ -72,4 +72,4 @@ async function importQuestions() {
 }
 
 // Uncomment to import the data
-await importQuestions();
+// await importQuestions();
