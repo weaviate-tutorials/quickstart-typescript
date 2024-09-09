@@ -45,7 +45,7 @@ async function createCollection() {
   console.log(`Collection ${questions.name} created!`);
 }
 // Uncomment to create the collection
-await createCollection();
+// await createCollection();
 
 // Verify collection was created
 async function checkCollection() {
