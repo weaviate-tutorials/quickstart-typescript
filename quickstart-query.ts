@@ -22,9 +22,7 @@ const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
  }
 )
 
-// Check client status
-// console.log('Weaviate Ready:', await client.isReady())
-
+// Run a fetch objects query
 async function fetchObjects() {
   const questionCollection = client.collections.get('Question')
 
@@ -36,8 +34,6 @@ async function fetchObjects() {
   console.log(response.objects)
   
 }
-
-// await fetchObjects()
 
 // Run a near text query
 async function nearTextQuery() {
@@ -108,6 +104,12 @@ async function generativeSearchGroupedQuery() {
 
 // Run the queries
 async function main() {
+  // Uncomment to check client status
+  // console.log(await client.isReady())
+
+  // Uncomment to run the fetch objects query
+  // await fetchObjects()
+
   // Uncomment to run the near text query
   // await nearTextQuery();
 
