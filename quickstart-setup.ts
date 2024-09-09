@@ -22,9 +22,6 @@ const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
  }
 )
 
-// Uncomment to check client status
-// console.log(await client.isReady())
-
 // Delete the collection if it exists
 // To start cleanly each time you run this script, uncomment the delete
 // statement. Be careful. If you happen to have another collection called
@@ -44,8 +41,6 @@ async function createCollection() {
   })
   console.log(`Collection ${questions.name} created!`);
 }
-// Uncomment to create the collection
-// await createCollection();
 
 // Verify collection was created
 async function checkCollection() {
@@ -53,10 +48,8 @@ async function checkCollection() {
   const collectionConfig = await questions.config.get()
   console.log('Config collection: ', collectionConfig)
 }
-// Uncomment to verify the collection
-// await checkCollection()
 
-// Get data file
+// Get the data file
 const dataFile = 'https://raw.githubusercontent.com/weaviate-tutorials/quickstart/main/data/jeopardy_tiny.json';
 async function getJsonData() {
   const file = await fetch(dataFile);
@@ -71,5 +64,19 @@ async function importQuestions() {
   console.log('Bulk inserted data: ', result);
 }
 
-// Uncomment to import the data
-// await importQuestions();
+// Run the setup functions
+async function main() {
+  // Uncomment to check client status
+  // console.log(await client.isReady())
+
+  // Uncomment to create the collection
+  // await createCollection();
+
+  // Uncomment to verify the collection
+  // await checkCollection()
+
+  // Uncomment to import the data
+  // await importQuestions();
+}
+
+main()
