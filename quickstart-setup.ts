@@ -4,6 +4,7 @@
 // the query.
 
 import weaviate, { WeaviateClient, vectorizer, generative } from 'weaviate-client'
+import 'dotenv/config'
 
 // Get environment variables
 // Set these environment variables before you run the script. For more details,
@@ -22,34 +23,35 @@ const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
 )
 
 // Uncomment to check client status
-// console.log(await client.isReady())
+console.log(await client.isReady())
 
 // Delete the collection if it exists
 // To start cleanly each time you run this script, uncomment the delete
 // statement. Be careful. If you happen to have another collection called
 // 'Question' this statement deletes it.
 
-// if(client.collections.get('Question')){
-//   await client.collections.delete('Question')
-// }
+if(client.collections.get('Question')){
+  await client.collections.delete('Question')
+}
 
 // Create collection
 async function createCollection() {
   const questions = await client.collections.create({
     name: 'Question',
-    vectorizers: vectorizer.text2VecOpenAI(),
+    vectorizers: 
+      vectorizer.text2VecOpenAI(),
     generative: generative.openAI(),
   })
   console.log(`Collection ${questions.name} created!`);
 }
 // Uncomment to create the collection
-// await createCollection();
+await createCollection();
 
 // Verify collection was created
 async function checkCollection() {
   const questions = client.collections.get('Question')
   const collectionConfig = await questions.config.get()
-  console.log(collectionConfig)
+  console.log('Config collection: ', collectionConfig)
 }
 // Uncomment to verify the collection
 await checkCollection()
@@ -66,8 +68,8 @@ async function importQuestions() {
   const questions = client.collections.get('Question');
   const data = await getJsonData();
   const result = await questions.data.insertMany(data)
-  console.log('Bulk inserted: ', result);
+  console.log('Bulk inserted data: ', result);
 }
 
 // Uncomment to import the data
-// await importQuestions();
+await importQuestions();

@@ -1,4 +1,4 @@
-# Weaviate quickstart code - TypeScript
+# Weaviate Quickstart code - TypeScript
 
 This repo contains TypeScript code to follow along with the Weaviate
 [Quickstart](https://weaviate.io/developers/weaviate/quickstart). The code
@@ -13,10 +13,12 @@ There are two code files. Both files use the [TypeScript v3 client](https://weav
 
 To run the project, follow these steps:
 
-1. Configure environment variables to connect to a Weaviate instance.
-1. Use `quickstart-setup.ts` to create the example collection.
-1. To run a query, edit `quickstart-query.ts` and uncomment the line that calls the
-query.
+1. Clone the repository.
+1. Install all relevant dependencies with `npm run install`. 
+1. Configure [environment variables](#configure-environment-variables) to connect to a Weaviate instance.
+1. Use `quickstart-setup.ts` to create the example collection by running `npm run setup` in your terminal
+1. To make a query, edit `quickstart-query.ts` and uncomment the line that calls the
+query then run `npm run query` in your terminal.
 
 ## Configure environment variables
 
