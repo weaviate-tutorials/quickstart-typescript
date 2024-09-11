@@ -3,6 +3,8 @@
 // To run a query, edit this file, to uncomment the line that calls the query.
 
 import weaviate, { WeaviateClient } from 'weaviate-client'
+import 'dotenv/config'
+
 
 // Get environment variables
 // Set these environment variables before you run the script. For more details,
@@ -20,15 +22,24 @@ const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
  }
 )
 
-// Check client status
-// console.log(await client.isReady())
+// Run a fetch objects query
+async function fetchObjects() {
+  const questionCollection = client.collections.get('Question')
+
+  const response = await questionCollection.query.fetchObjects({
+    limit: 5,
+  })
+
+  console.log(response.objects)
+  
+}
 
 // Run a near text query
 async function nearTextQuery() {
   const questions = client.collections.get('Question');
 
   const result = await questions.query.nearText('biology', {
-    limit: 2
+    limit: 2,
   });
 
   for (let object of result.objects) {
@@ -81,12 +92,22 @@ async function generativeSearchGroupedQuery() {
    { limit: 2 }
  );
 
+ for (let object of result.objects) {
+  console.log(JSON.stringify(object.properties, null, 2));
+}
+
  console.log(result.generated);
  return result;
 }
 
 // Run the queries
 async function main() {
+  // Uncomment to check client status
+  // console.log(await client.isReady())
+
+  // Uncomment to run the fetch objects query
+  // await fetchObjects()
+
   // Uncomment to run the near text query
   // await nearTextQuery();
 
