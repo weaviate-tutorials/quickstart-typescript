@@ -28,7 +28,6 @@ async function fetchObjects() {
 
   const response = await questionCollection.query.fetchObjects({
     limit: 5,
-    returnMetadata: ['creationTime']
   })
 
   console.log(response.objects)
@@ -41,7 +40,6 @@ async function nearTextQuery() {
 
   const result = await questions.query.nearText('biology', {
     limit: 2,
-    returnMetadata: ['distance']
   });
 
   for (let object of result.objects) {

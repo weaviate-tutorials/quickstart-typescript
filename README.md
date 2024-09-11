@@ -1,4 +1,4 @@
-# Weaviate Quickstart code - TypeScript
+# Weaviate quickstart code - TypeScript
 
 This repo contains TypeScript code to follow along with the Weaviate
 [Quickstart](https://weaviate.io/developers/weaviate/quickstart). The code

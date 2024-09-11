@@ -27,9 +27,9 @@ const client: WeaviateClient = await weaviate.connectToWeaviateCloud(
 // statement. Be careful. If you happen to have another collection called
 // 'Question' this statement deletes it.
 
-if(client.collections.get('Question')){
-  await client.collections.delete('Question')
-}
+// if(client.collections.get('Question')){
+//   await client.collections.delete('Question')
+// }
 
 // Create collection
 async function createCollection() {
